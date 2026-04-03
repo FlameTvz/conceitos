@@ -15,6 +15,7 @@ public class LanguageRepository
     public void Criar(LanguageDto linguagem)
     {
         languageData.languages.Add(linguagem);
+        languageData.IdTemp = languageData.languages[^1].Id;
     }
     public List<LanguageDto> Lista()
     {
@@ -46,5 +47,10 @@ public class LanguageRepository
     public LanguageDto FindbyId(int id)
     {
         return languageData.languages.Find(x => x.Id == id);
+    }
+
+    public int GetLastId()
+    {
+        return languageData.IdTemp;
     }
 }
